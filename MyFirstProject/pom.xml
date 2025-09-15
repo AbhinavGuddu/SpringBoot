@@ -1,54 +1,202 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    POM.XML - Project Object Model
+    
+    Purpose:
+    - Maven build configuration file
+    - Project dependencies define karta hai
+    - Build process control karta hai
+    - Project metadata contain karta hai
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<!-- Maven POM model version -->
 	<modelVersion>4.0.0</modelVersion>
+	
+	<!-- 
+		Parent POM - Spring Boot Starter Parent
+		
+		Purpose:
+		- Spring Boot ke default configurations provide karta hai
+		- Dependency versions manage karta hai
+		- Build plugins pre-configure karta hai
+		- Java version aur encoding set karta hai
+	-->
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>3.5.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	
+	<!-- 
+		Project Coordinates (GAV)
+		- GroupId: Organization/Company identifier
+		- ArtifactId: Project name
+		- Version: Project version
+	-->
 	<groupId>com.SpringBoot</groupId>
 	<artifactId>MyFirstProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<!-- Project Metadata -->
 	<name>MyFirstProject</name>
-	<description>Demo project for Spring Boot</description>
-	<url/>
+	<description>My First Spring Boot REST API Project - Learning Spring Boot fundamentals</description>
+	<url>https://github.com/AbhinavGuddu/SpringBoot</url>
+	
+	<!-- License Information -->
 	<licenses>
-		<license/>
+		<license>
+			<name>MIT License</name>
+			<url>https://opensource.org/licenses/MIT</url>
+		</license>
 	</licenses>
+	
+	<!-- Developer Information -->
 	<developers>
-		<developer/>
+		<developer>
+			<id>abhinav</id>
+			<name>Abhinav</name>
+			<email>abhinav@example.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
 	</developers>
+	
+	<!-- Source Control Management -->
 	<scm>
-		<connection/>
-		<developerConnection/>
-		<tag/>
-		<url/>
+		<connection>scm:git:git://github.com/AbhinavGuddu/SpringBoot.git</connection>
+		<developerConnection>scm:git:ssh://github.com/AbhinavGuddu/SpringBoot.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/AbhinavGuddu/SpringBoot</url>
 	</scm>
+	
+	<!-- 
+		Project Properties
+		- Java version specification
+		- Custom properties define kar sakte hain
+	-->
 	<properties>
+		<!-- Java version - Spring Boot 3.x requires Java 17+ -->
 		<java.version>17</java.version>
+		
+		<!-- Encoding settings -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	
+	<!-- 
+		Dependencies - External libraries jo project mein use kar rahe hain
+	-->
 	<dependencies>
+		
+		<!-- 
+			Spring Boot Web Starter
+			
+			Includes:
+			- Spring MVC (REST API development)
+			- Embedded Tomcat server
+			- JSON processing (Jackson)
+			- Validation framework
+			- Auto-configuration
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<!-- Version parent se inherit hota hai -->
 		</dependency>
 
+		<!-- 
+			Spring Boot Test Starter
+			
+			Includes:
+			- JUnit 5 (Testing framework)
+			- Mockito (Mocking framework)
+			- Spring Test (Integration testing)
+			- AssertJ (Assertion library)
+			- Hamcrest (Matcher library)
+			
+			Scope: test - Sirf testing ke time use hota hai
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- 
+			Future Dependencies (Uncomment when needed):
+			
+			Database:
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-data-jpa</artifactId>
+			</dependency>
+			
+			H2 Database:
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<scope>runtime</scope>
+			</dependency>
+			
+			MySQL Database:
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<scope>runtime</scope>
+			</dependency>
+			
+			Validation:
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-validation</artifactId>
+			</dependency>
+		-->
+		
 	</dependencies>
 
+	<!-- 
+		Build Configuration
+		- Maven plugins aur build process define karta hai
+	-->
 	<build>
 		<plugins>
+			
+			<!-- 
+				Spring Boot Maven Plugin
+				
+				Features:
+				- Executable JAR create karta hai
+				- mvn spring-boot:run command provide karta hai
+				- Fat JAR with embedded server banata hai
+				- Development tools integration
+			-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<!-- 
+					Configuration options:
+					<configuration>
+						<mainClass>com.SpringBoot.MyFirstProject.MyFirstProjectApplication</mainClass>
+					</configuration>
+				-->
 			</plugin>
+			
 		</plugins>
 	</build>
+
+	<!-- 
+		Maven Commands:
+		
+		1. Compile: mvn compile
+		2. Test: mvn test
+		3. Package: mvn package
+		4. Run: mvn spring-boot:run
+		5. Clean: mvn clean
+		6. Install: mvn install
+	-->
 
 </project>
